@@ -8,6 +8,10 @@ var bodyParse = require('body-parser');
 var http = require('http');
 var path = require('path');
 
+
+var CryptoJS = require('crypto-js');
+var WebSocket = require('ws');
+
 var app = express();
 
 app.use(morgan('dev'));
