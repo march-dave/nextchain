@@ -9,8 +9,14 @@ var http = require('http');
 var path = require('path');
 
 
+// Crypto JS Start
 var CryptoJS = require('crypto-js');
 var WebSocket = require('ws');
+
+var http_port = process.env.HTTP_PORT || 3001;
+var p2p_port = process.env.P2P_PORT || 6001;
+var initialPeers = process.env.PEERS ? process.env.PEERS.split(',') : [];
+// Crypto JS End
 
 var app = express();
 
