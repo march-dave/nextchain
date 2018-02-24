@@ -23,6 +23,8 @@ var MessageType = {
     QUERY_ALL: 1,
     RESPONSE_BLOCKCHAIN: 2
 };
+
+var blockchain = [getGenesisBlock()];
 // Crypto JS End
 
 var app = express();
