@@ -60,6 +60,13 @@ var initP2PServer = () => {
     console.log('listening websocket p2p port on: ' + p2p_port);
 
 };
+
+var initConnection = (ws) => {
+    sockets.push(ws);
+    initMessageHandler(ws);
+    initErrorHandler(ws);
+    write(ws, queryChainLengthMsg());
+};
 // Crypto JS End
 
 var app = express();
