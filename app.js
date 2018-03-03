@@ -67,6 +67,24 @@ var initConnection = (ws) => {
     initErrorHandler(ws);
     write(ws, queryChainLengthMsg());
 };
+
+var initMessageHandler = (ws) => {
+    ws.on('message', (data) => {
+        var message = JSON.parse(data);
+        console.log('Received message' + JSON.stringify(message));
+        switch (message.type) {
+            case MessageType.QUERY_LATEST:
+                write(ws, responseLatestMsg());
+                break;
+            case MessageType.QUERY_ALL:
+                write(ws, responseChainMsg());
+                break;
+            case MessageType.RESPONSE_BLOCKCHAIN:
+                handleBlockchainResponse(message);
+                break;
+        }
+    });
+};
 // Crypto JS End
 
 var app = express();
